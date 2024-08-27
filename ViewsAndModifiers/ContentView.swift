@@ -11,6 +11,21 @@ struct ContentView: View {
     @State private var useRedText = false
     @State private var useUnoptimizedRedText = false
     
+    let motto1 = Text("Estuans interius")
+    let motto2 = Text("Ira vehementi")
+    
+    var motto3: some View {
+        VStack {
+            Text("Estuans interius, Ira vehementi")
+            Text("Sepiroth")
+        }
+    }
+    
+    @ViewBuilder var motto4: some View {
+        Text("Estuans interius, Ira vehementi")
+        Text("Sepiroth")
+    }
+    
     var body: some View {
         VStack {
             Image(systemName: "globe")
@@ -60,6 +75,14 @@ struct ContentView: View {
                 Text("Please")
             }
             .blur(radius: 5)
+            Group {
+                motto1
+                    .font(.subheadline.bold())
+                motto2
+                    .font(.subheadline.bold())
+                motto3
+                motto4
+            }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.purple)
