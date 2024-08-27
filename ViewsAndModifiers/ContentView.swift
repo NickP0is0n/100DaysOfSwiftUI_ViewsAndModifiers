@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var useRedText = false
+    @State private var useUnoptimizedRedText = false
+    
     var body: some View {
         VStack {
             Image(systemName: "globe")
@@ -29,6 +32,21 @@ struct ContentView: View {
                 .background(.yellow)
                 .padding()
                 .background(.green)
+            Button("Text in question") {
+                useRedText.toggle()
+            }
+            .foregroundStyle(useRedText ? .red : .white )
+            if useUnoptimizedRedText {
+                Button("Unoptimized text in question") {
+                    useUnoptimizedRedText.toggle()
+                }
+                .foregroundStyle(.red)
+            } else {
+                Button("Unoptimized text in question") {
+                    useUnoptimizedRedText.toggle()
+                }
+                .foregroundStyle(.white)
+            }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.purple)
