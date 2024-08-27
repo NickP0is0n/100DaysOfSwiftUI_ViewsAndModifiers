@@ -16,7 +16,7 @@ struct ContentView: View {
             Text("Hello, world!")
                 .foregroundStyle(.white)
             Button("Hello, world!") {
-                // Do nothing
+                print(type(of: self.body))
             }
             .frame(width: 200, height: 200)
             .background(.red)
