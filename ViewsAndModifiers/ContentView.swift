@@ -19,6 +19,23 @@ struct CapsuleText: View {
     }
 }
 
+struct Title: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.largeTitle)
+            .foregroundColor(.blue)
+            .padding()
+            .background(.white)
+            .clipShape(RoundedRectangle(cornerRadius: 20 ))
+    }
+}
+
+extension View {
+    func titleStyle() -> some View {
+        modifier(Title())
+    }
+}
+
 struct ContentView: View {
     @State private var useRedText = false
     @State private var useUnoptimizedRedText = false
@@ -48,7 +65,7 @@ struct ContentView: View {
             Button("Hello, world!") {
                 print(type(of: self.body))
             }
-            .frame(width: 200, height: 200)
+            .frame(width: 100, height: 100)
             .background(.red)
             Text("I have many mods!")
                 .padding()
@@ -99,9 +116,12 @@ struct ContentView: View {
                 CapsuleText(text: "Here!")
                     .foregroundStyle(.yellow)
             }
+            Text("I am custom title.")
+                .titleStyle()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.purple)
+        
     }
 }
 
