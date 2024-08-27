@@ -36,6 +36,24 @@ extension View {
     }
 }
 
+struct GridStack<Content: View>: View {
+    let rows: Int
+    let columns: Int
+    let content: (Int, Int) -> Content
+    
+    var body: some View {
+        VStack {
+            ForEach(0..<rows, id: \.self) { row in
+                HStack {
+                    ForEach(0..<columns, id: \.self) { column in
+                        content(row, column)
+                    }
+                }
+            }
+        }
+    }
+}
+
 struct ContentView: View {
     @State private var useRedText = false
     @State private var useUnoptimizedRedText = false
@@ -104,7 +122,7 @@ struct ContentView: View {
                 Text("Please")
             }
             .blur(radius: 5)
-            Group {
+            /*Group {
                 motto1
                     .font(.subheadline.bold())
                 motto2
@@ -117,7 +135,10 @@ struct ContentView: View {
                     .foregroundStyle(.yellow)
             }
             Text("I am custom title.")
-                .titleStyle()
+                .titleStyle()*/
+            GridStack(rows: 2, columns: 2) { row, col in
+                Text("R\(row)C\(col)")
+            }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.purple)
