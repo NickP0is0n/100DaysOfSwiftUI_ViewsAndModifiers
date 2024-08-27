@@ -47,6 +47,19 @@ struct ContentView: View {
                 }
                 .foregroundStyle(.white)
             }
+            VStack {
+                Text("Alpha")
+                Text("Beta")
+                Text("RC")
+                Text("Release")
+            }
+            .font(.title)
+            VStack {
+                Text("Focus")
+                    .blur(radius: 0)
+                Text("Please")
+            }
+            .blur(radius: 5)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.purple)
