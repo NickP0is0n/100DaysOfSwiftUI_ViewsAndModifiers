@@ -7,6 +7,18 @@
 
 import SwiftUI
 
+struct CapsuleText: View {
+    var text: String
+    
+    var body: some View {
+        Text(text)
+            .font(.subheadline)
+            .padding()
+            .background(.blue)
+            .clipShape(Capsule())
+    }
+}
+
 struct ContentView: View {
     @State private var useRedText = false
     @State private var useUnoptimizedRedText = false
@@ -68,7 +80,7 @@ struct ContentView: View {
                 Text("RC")
                 Text("Release")
             }
-            .font(.title)
+            .font(.headline)
             VStack {
                 Text("Focus")
                     .blur(radius: 0)
@@ -82,6 +94,10 @@ struct ContentView: View {
                     .font(.subheadline.bold())
                 motto3
                 motto4
+                CapsuleText(text: "I am")
+                    .foregroundStyle(.white)
+                CapsuleText(text: "Here!")
+                    .foregroundStyle(.yellow)
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
