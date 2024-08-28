@@ -30,9 +30,21 @@ struct Title: ViewModifier {
     }
 }
 
+struct LargeBlueTitle: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.largeTitle.bold())
+            .foregroundStyle(.blue)
+    }
+}
+
 extension View {
     func titleStyle() -> some View {
         modifier(Title())
+    }
+    
+    func largeBlueTitleStyle() -> some View {
+        modifier(LargeBlueTitle())
     }
 }
 
@@ -139,6 +151,8 @@ struct ContentView: View {
             GridStack(rows: 2, columns: 2) { row, col in
                 Text("R\(row)C\(col)")
             }
+            Text("Prominent title")
+                .largeBlueTitleStyle()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.purple)
